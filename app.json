@@ -31,6 +31,17 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8a7367d6-af4a-4412-b507-cfbf91b72487"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/8a7367d6-af4a-4412-b507-cfbf91b72487"
     }
   }
 }
