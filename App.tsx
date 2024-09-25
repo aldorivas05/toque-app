@@ -1,30 +1,21 @@
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import React                          from 'react';
+import { NavigationContainer }        from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import IntroSlider                    from './App/screens/IntroductionScreen';
 
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
-    <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Intro">
+        <Stack.Screen 
+          name="Intro" 
+          component={IntroSlider} 
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
