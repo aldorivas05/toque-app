@@ -3,15 +3,9 @@ import {
   Text, 
   StyleSheet, 
   TouchableOpacity,
-  GestureResponderEvent 
 } from 'react-native';
+import { ButtonComponentProps } from '@/App/types';
 
-interface ButtonComponentProps {
-  title: string;
-  color: string;
-  iconName?: string;
-  onPress: (event: GestureResponderEvent) => void;
-}
 
 const ButtonComponent: React.FC<ButtonComponentProps> = ({ title, color, onPress }) => {
   return (
@@ -23,7 +17,7 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({ title, color, onPress
 
 const styles = StyleSheet.create({
   button: {
-    width: '90%',
+    width: 320,
     height: 50,
     padding: 10,
     borderRadius: 25,

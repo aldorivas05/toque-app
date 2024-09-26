@@ -4,6 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { LinearGradient }   from 'expo-linear-gradient';
 import Carousel             from "@/App/components/Carousel";
 
+
 const gradientColors = [
   'rgba(180, 0, 45, 0.1)',
   'rgba(180, 0, 45, 0)',

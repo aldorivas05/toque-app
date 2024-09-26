@@ -1,4 +1,12 @@
 export type RootStackParams = {
-  Intro: undefined,
-  Home: undefined
+  Introduction: undefined;
+  NearMeScreen: undefined;
+  MapScreen: undefined;
+}
+
+export type  ButtonComponentProps = {
+  title: string;
+  color: string;
+  iconName?: string;
+  onPress: any;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { 
   View, 
   Text, 
@@ -11,6 +11,9 @@ import {
   ImageProps
 } from 'react-native';
 import ButtonComponent from './common /ButtonComponent';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParams } from '../types';
+
 
 
 const { width } = Dimensions.get('window');
@@ -45,7 +48,10 @@ const data: Slide[] = [
 
 const Carousel: React.FC = () => {
 
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  
   
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -89,7 +95,7 @@ const Carousel: React.FC = () => {
           <ButtonComponent 
             title="Empezar" 
             color="#B4002D"
-            onPress={() => alert('Boton apretado!')} 
+            onPress={() => navigation.navigate('NearMeScreen')}
           />
         </View>
       )}
