@@ -49,11 +49,11 @@ const NavBarComponent = () => {
 
 const styles = StyleSheet.create({
   navBar: {
-    width: 340,
+    width: '100%',
     height: 68, 
-    maxWidth: 340,
     minHeight: 68,
     borderRadius: 20,
+    paddingHorizontal: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: "center",
@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   iconText: {
-    fontSize: 12,
+    fontFamily: 'Inter_400Regular',
+    fontSize: 10,
     color: '#777777',
   },
   activeText: {

@@ -3,6 +3,7 @@ import React, { useState }        from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Dropdown }               from 'react-native-element-dropdown';
 
+
 const DropdownComponent = () => {
   const [selectedMode1, setSelectedMode1] = useState('');
   const [selectedMode2, setSelectedMode2] = useState('');
@@ -21,7 +22,7 @@ const DropdownComponent = () => {
     <View style={styles.container}>
       <Text style={styles.text}>Modo:</Text>
 
-      <View style={styles.pickerWrapper}>
+      <View style={styles.dropdownInitialContainer}>
         <View style={styles.iconDropdownContainer}>
            <HeartIcon />
           <Dropdown
@@ -38,7 +39,7 @@ const DropdownComponent = () => {
         </View>
       </View>
 
-      <View style={styles.pickerWrapper}>
+      <View style={styles.dropdownContainer}>
         <Dropdown
           style={styles.dropdownWithPadding}
           data={optionsMode2}
@@ -57,15 +58,15 @@ const DropdownComponent = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 330,
-    height: 36,
-    paddingHorizontal: 1,
-    gap: 4,
+    width: '100%',
+    height: 48,
+    gap: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 8,
     backgroundColor: '#fff',
     borderRadius: 22,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.1,
@@ -73,36 +74,49 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   text: {
-    fontSize: 16,
-    color: '#777777'
+    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
+    color: '#777777',
+    marginLeft: 8
   },
-  pickerWrapper: {
+  dropdownInitialContainer: {
+    flex:1,
+    borderRadius: 14,
+    borderWidth: 0.5,
+    borderColor: '#CCCCCC',
+    overflow: 'hidden',
+    marginRight: 4
+  },
+  dropdownContainer: {
+    flex:1,
     borderRadius: 14,
     borderWidth: 0.5,
     borderColor: '#CCCCCC',
     overflow: 'hidden',
   },
   iconDropdownContainer: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 6,
+    paddingLeft: 8,
   },
   dropdownWithIcon: {
-    width: 130,
-    height: 28,
-    paddingLeft: 4, 
+    flex: 1,
+    paddingHorizontal: 12, 
+    
   },
   dropdownWithPadding: {
-    width: 98,
-    height: 28,
-    paddingLeft: 6,
+    flex: 1,
+    paddingHorizontal: 12,
   },
   placeholderStyle: {
-    fontSize: 14,
+    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
     color: '#777777',
   },
   selectedTextStyle: {
-    fontSize: 14,
+    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
     color: '#777777',
   },
 });

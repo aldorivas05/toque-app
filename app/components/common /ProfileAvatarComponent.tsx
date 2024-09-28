@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 193, 7, 0.2)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 5,
+    padding: 4.5,
     position: 'relative',
   },
   profileImage: {

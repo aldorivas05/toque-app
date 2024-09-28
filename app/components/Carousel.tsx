@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     width,
     justifyContent: 'center',
+    paddingHorizontal: 20,
     alignItems: 'center',
   },
   image: {
@@ -122,19 +123,20 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
+    fontFamily: 'Inter_400Regular',
     textAlign: 'center',
-    marginHorizontal: 20,
     color: '#222222'
   },
   boldText: {
-    fontWeight: 'bold',
+    fontFamily: 'Inter_700Bold',
+    fontSize: 16,
     color: '#222222'
   },
   indicatorContainer: {
     flexDirection: 'row',
     marginTop: 20,
     position: 'absolute',
-    bottom: 90,
+    bottom: 110,
   },
   indicator: {
     height: 7,
@@ -150,8 +152,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 24,
     width: '100%',
+    padding: 24,
     alignItems: 'center',
   },
 });

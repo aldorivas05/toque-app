@@ -17,7 +17,7 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({ title, color, onPress
 
 const styles = StyleSheet.create({
   button: {
-    width: 320,
+    width: '100%',
     height: 50,
     padding: 10,
     borderRadius: 25,
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonText: {
+    fontFamily: 'Inter_400Regular',
     color: '#FFFFFF',
     fontSize: 16,
   },

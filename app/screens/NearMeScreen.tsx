@@ -8,6 +8,7 @@ import FilterIcon                       from '@/assets/icons/FilterIcon';
 import ProfileAvatarComponent           from '../components/common /ProfileAvatarComponent';
 import DropdownComponent                from '../components/DropdownComponent';
 import NavBarComponent                  from '../components/common /NavBarComponent';
+import { LinearGradient }               from 'expo-linear-gradient';
 
 interface People {
   id: number;
@@ -20,6 +21,12 @@ interface People {
   longitude: number;
 }
 
+const gradientColors = [
+  '#F6F6F6',
+  'rgba(246, 246, 246, 0.00)'
+];
+
+
 const people: People[] = [
   { id: 1, name: 'Ana', mode: 'fire', touched: false, touchMatch: false, image: require('../../assets/images/image.png'), latitude: 39.4676562, longitude: -0.3924242 },
   { id: 2, name: 'Ben', mode: 'heart', touched: true, touchMatch: false, image: require('../../assets/images/image1.png'), latitude: 39.4496562, longitude: -0.3954242 },
@@ -28,6 +35,167 @@ const people: People[] = [
   { id: 5, name: 'Eva', mode: 'fire', touched: true, touchMatch: false, image: require('../../assets/images/image4.png'), latitude: 39.4626562, longitude: -0.4034242 },
   { id: 6, name: 'Franco', mode: 'heart', touched: false, touchMatch: false, image: require('../../assets/images/image5.png'), latitude: 39.436562, longitude: -0.4054242 },
   { id: 7, name: 'Gina', mode: 'fire', touched: false, touchMatch: true, image: require('../../assets/images/image5.png'), latitude: 39.456562, longitude: -0.3774242 }
+];
+
+const mapStyle = [
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ffffff"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dadada"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#c9c9c9"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  }
 ];
 
 const NearMeScreen = () => {
@@ -41,6 +209,7 @@ const NearMeScreen = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+        customMapStyle={mapStyle}
       >
         {people.map((person) => {
           const borderColor = person.mode === 'fire' ? 'rgba(255, 193, 7, 0.2)' : 'rgba(220, 53, 69, 0.2)';
@@ -69,16 +238,24 @@ const NearMeScreen = () => {
       </MapView>
 
       <View style={styles.componentSection}>
+        <LinearGradient
+          colors={gradientColors}
+          start={{ x: 0.5, y: 0.2 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.background}
+        />
         <View style={styles.inputContainer}>
-          <CustomInputComponent 
-            leftIcon={<CurrentPositionIcon />}
-            rightIcon={<FilterIcon />}
-          />
-          <NotificationsIcon />
+          <View style={styles.customInputWrapper}>
+            <CustomInputComponent 
+              leftIcon={<CurrentPositionIcon />}
+              rightIcon={<FilterIcon />}
+            />
+          </View>
+          <View style={styles.notificationIconContainer}>
+            <NotificationsIcon />
+          </View>
         </View>
-        <View>
-          <DropdownComponent />
-        </View>
+        <DropdownComponent />
       </View>
       <View style={styles.navBarContainer}>
         <NavBarComponent />
@@ -98,22 +275,37 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   componentSection: {
+    width: '100%',
+    height: 178,
     position: 'absolute',
-    justifyContent: 'center',
     alignItems: 'center',
-    top: 60,
+    paddingHorizontal: 24,
+    justifyContent: 'flex-end',
+    paddingBottom: 10,
+    top: 0,
     gap: 8,
-    flex: 1,
+  },
+  background: {
+    ...StyleSheet.absoluteFillObject,
   },
   inputContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 20,
+    width: '100%',
+  },
+  customInputWrapper: {
+    flex: 1,
+  },
+  notificationIconContainer: {
+    width: 24, 
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 12,
   },
   navBarContainer: {
     bottom: 100,
-    flex:1
+    flex:1,
+    paddingHorizontal: 24
   }
 });
 
