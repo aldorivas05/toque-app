@@ -1,6 +1,6 @@
 import React                            from 'react';
 import { View, StyleSheet, ImageProps } from 'react-native';
-import MapView, { Marker }              from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE }              from 'react-native-maps';
 import CustomInputComponent             from '../components/common /CustomInputComponent';
 import CurrentPositionIcon              from '@/assets/icons/CurrentPositionIcon';
 import NotificationsIcon                from '@/assets/icons/NotificationsIcon';
@@ -210,6 +210,7 @@ const NearMeScreen = () => {
           longitudeDelta: 0.0421,
         }}
         customMapStyle={mapStyle}
+        provider={PROVIDER_GOOGLE}
       >
         {people.map((person) => {
           const borderColor = person.mode === 'fire' ? 'rgba(255, 193, 7, 0.2)' : 'rgba(220, 53, 69, 0.2)';
