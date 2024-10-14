@@ -9,6 +9,8 @@ import ProfileAvatarComponent           from '../components/common /ProfileAvata
 import DropdownComponent                from '../components/DropdownComponent';
 import NavBarComponent                  from '../components/common /NavBarComponent';
 import { LinearGradient }               from 'expo-linear-gradient';
+import { NavigationProp, useNavigation }from '@react-navigation/native';
+import { RootStackParams }              from '../types';
 
 interface People {
   id: number;
@@ -198,7 +200,13 @@ const mapStyle = [
   }
 ];
 
-const NearMeScreen = () => {
+const NearMeScreen: React.FC = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
+  const handleRightIconPress = () => {
+    navigation.navigate('FilterScreen')
+  };
+  
   return (
     <View style={styles.container}>
       <MapView
@@ -250,6 +258,7 @@ const NearMeScreen = () => {
             <CustomInputComponent 
               leftIcon={<CurrentPositionIcon />}
               rightIcon={<FilterIcon />}
+              onRightIconPress={handleRightIconPress}
             />
           </View>
           <View style={styles.notificationIconContainer}>
@@ -277,12 +286,12 @@ const styles = StyleSheet.create({
   },
   componentSection: {
     width: '100%',
-    height: 178,
+    height: 193,
     position: 'absolute',
     alignItems: 'center',
     paddingHorizontal: 24,
     justifyContent: 'flex-end',
-    paddingBottom: 10,
+    paddingBottom: 12,
     top: 0,
     gap: 8,
   },
@@ -304,7 +313,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   navBarContainer: {
-    bottom: 100,
+    bottom: 90,
     flex:1,
     paddingHorizontal: 24
   }

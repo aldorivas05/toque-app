@@ -2,14 +2,16 @@ import React  from 'react';
 import { 
   View, 
   TextInput, 
-  StyleSheet } from 'react-native';
+  StyleSheet, 
+  TouchableOpacity} from 'react-native';
 
 interface CustomInputComponentProps {
   leftIcon: JSX.Element,
-  rightIcon?: JSX.Element
+  rightIcon?: JSX.Element,
+  onRightIconPress?: () => void;
 }
 
-const CustomInputComponent: React.FC<CustomInputComponentProps> = ({leftIcon, rightIcon}) => {
+const CustomInputComponent: React.FC<CustomInputComponentProps> = ({leftIcon, rightIcon, onRightIconPress}) => {
   return (
     <View style={styles.container}>
   
@@ -17,7 +19,7 @@ const CustomInputComponent: React.FC<CustomInputComponentProps> = ({leftIcon, ri
     
       <TextInput style={styles.input} placeholder={"Buscar"} />
 
-      {rightIcon && <View style={styles.rightIcon}>{rightIcon}</View>}
+      {rightIcon && <TouchableOpacity onPress={onRightIconPress} style={styles.rightIcon}>{rightIcon}</TouchableOpacity>}
     </View>
   );
 };

@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 20,
     position: 'absolute',
-    bottom: 110,
+    bottom: 90,
   },
   indicator: {
     height: 7,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 24,
     width: '100%',
-    padding: 24,
+    paddingHorizontal: 24,
     alignItems: 'center',
   },
 });

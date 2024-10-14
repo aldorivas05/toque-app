@@ -7,8 +7,11 @@ import NearMeScreen                   from './App/screens/NearMeScreen';
 import { RootStackParams }            from './App/types';
 import { 
   useFonts, 
-  Inter_400Regular, 
+  Inter_400Regular,
+  Inter_600SemiBold,
   Inter_700Bold }                     from '@expo-google-fonts/inter';
+import FilterScreen from './App/screens/FilterScreen';
+import CustomHeader from './App/components/common /CustomHeader';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -19,6 +22,7 @@ export default function App() {
   let [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_700Bold,
+    Inter_600SemiBold
   });
 
   useEffect(() => {
@@ -41,8 +45,13 @@ export default function App() {
         />
         <Stack.Screen 
           name="NearMeScreen" 
-          component={NearMeScreen} 
+          component={NearMeScreen}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="FilterScreen" 
+          component={FilterScreen} 
+          options={{ header: () => <CustomHeader /> }}
         />
       </Stack.Navigator>
     </NavigationContainer>
