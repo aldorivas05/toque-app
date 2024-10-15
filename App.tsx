@@ -3,7 +3,7 @@ import { NavigationContainer }        from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as SplashScreen              from 'expo-splash-screen'; 
 import IntroductionScreen             from './App/screens/IntroductionScreen';
-import NearMeScreen                   from './App/screens/NearMeScreen';
+import NearMeMapScreen                from './App/screens/NearMeMapScreen';
 import { RootStackParams }            from './App/types';
 import { 
   useFonts, 
@@ -12,6 +12,8 @@ import {
   Inter_700Bold }                     from '@expo-google-fonts/inter';
 import FilterScreen from './App/screens/FilterScreen';
 import CustomHeader from './App/components/common /CustomHeader';
+import NearMeScreen from './App/screens/NearMeScreen';
+import NearMeBTListScreen from './App/screens/NearMeBTListScreen';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -52,6 +54,16 @@ export default function App() {
           name="FilterScreen" 
           component={FilterScreen} 
           options={{ header: () => <CustomHeader /> }}
+        />
+        <Stack.Screen 
+          name="NearMeBTListScreen"
+          component={NearMeBTListScreen} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="NearMeMapScreen"
+          component={NearMeMapScreen} 
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

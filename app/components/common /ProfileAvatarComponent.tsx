@@ -1,43 +1,63 @@
-import React            from 'react';
-import { 
-  View, 
-  Image,
-  StyleSheet, 
-  ImageSourcePropType } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, ImageSourcePropType, Image } from 'react-native';
 
 interface ProfileAvatarComponentProps {
   borderColor: string;
   profileImage: ImageSourcePropType;
-  modeIcon: ImageSourcePropType;
-  touchIcon?: ImageSourcePropType;
-  matchIcon?: ImageSourcePropType;
+  modeIcon: React.ReactNode; 
+  touchIcon?: React.ReactNode; 
+  messageIcon?: React.ReactNode;
+  onLineIcon?:  React.ReactNode;
+  matchIcon?: React.ReactNode; 
 }
 
-const ProfileAvatarComponent: React.FC<ProfileAvatarComponentProps> = ({ borderColor, profileImage, modeIcon, touchIcon, matchIcon }) => {
+const ProfileAvatarComponent: React.FC<ProfileAvatarComponentProps> = ({ 
+  borderColor, 
+  profileImage, 
+  modeIcon, 
+  touchIcon, 
+  messageIcon, 
+  onLineIcon, 
+  matchIcon
+ }) => {
   return (
     <View style={[styles.container, { borderColor }]}>
-      <Image
-        source={profileImage}
-        style={styles.profileImage}
-      />
+      <View style={styles.profileImageContainer}>
+        <Image
+          source={profileImage}
+          style={styles.profileImageContainer}
+        />
+      </View>
 
       {matchIcon && (
         <View style={styles.imageOverlay} />
       )}
 
       <View style={styles.iconContainer}>
-        <Image source={modeIcon} style={styles.modeIcon} />
+        {modeIcon}
       </View>
 
       {touchIcon && (
         <View style={styles.touchIconContainer}>
-          <Image source={touchIcon} style={styles.touchIcon} />
+          {touchIcon}
+        </View>
+      )}
+
+      {messageIcon && (
+        <View style={styles.messageIconContainer}>
+          {messageIcon}
+        </View>
+      )}
+
+      {onLineIcon && (
+        <View style={styles.onLineIconContainer}>
+          {onLineIcon}
         </View>
       )}
 
       {matchIcon && (
         <View style={styles.matchIconContainer}>
-          <Image source={matchIcon} style={styles.matchIcon} />
+          {matchIcon}
         </View>
       )}
     </View>
@@ -56,10 +76,11 @@ const styles = StyleSheet.create({
     padding: 4.5,
     position: 'relative',
   },
-  profileImage: {
+  profileImageContainer: {
     width: '100%',
     height: '100%',
     borderRadius: 36,
+    overflow: 'hidden',
   },
   imageOverlay: {
     position: 'absolute',
@@ -78,11 +99,6 @@ const styles = StyleSheet.create({
     left: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 2,
-  },
-  modeIcon: {
-    width: 28,
-    height: 28,
   },
   touchIconContainer: {
     width: 28,
@@ -94,9 +110,25 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  touchIcon: {
+  messageIconContainer: {
     width: 28,
     height: 28,
+    borderRadius: 14,
+    position: 'absolute',
+    top: -8,
+    left: -8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  onLineIconContainer: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    position: 'absolute',
+    top: -8,
+    left: 42,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   matchIconContainer: {
     position: 'absolute',
@@ -105,10 +137,7 @@ const styles = StyleSheet.create({
     width: 25,
     height: 23,
   },
-  matchIcon: {
-    width: 25,
-    height: 23,
-  },
 });
 
 export default ProfileAvatarComponent;
+

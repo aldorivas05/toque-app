@@ -6,16 +6,19 @@ interface ButtonProps {
   textColor?: string;
   text: string;
   hasBorder?: boolean;
+  onPress?: () => void;
 }
 
 const FilterScreenButton: React.FC<ButtonProps> = ({
   backgroundColor = "#FFF", 
   textColor = "#000", 
   text, 
-  hasBorder = true
+  hasBorder = true,
+  onPress
 }) => {
   return (
     <TouchableOpacity
+    onPress={onPress}
       style={[
         styles.container,
         { backgroundColor: backgroundColor },
@@ -30,7 +33,7 @@ const FilterScreenButton: React.FC<ButtonProps> = ({
 const styles = StyleSheet.create({
   container: {
     height: 50,
-    paddingHorizontal: 40,
+    paddingHorizontal: 30,
     justifyContent: "center",
     alignItems: "center",
     flex: 1,

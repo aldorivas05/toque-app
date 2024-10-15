@@ -74,7 +74,7 @@ const FilterScreen: React.FC = () => {
           text="Borrar"
           hasBorder={true} 
         />
-         <FilterScreenButton
+        <FilterScreenButton
           backgroundColor="#B4002D"
           textColor="#FFF"
           text="Aplicar"
