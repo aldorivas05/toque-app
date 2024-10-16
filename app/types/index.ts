@@ -5,6 +5,9 @@ export type RootStackParams = {
   FilterScreen: undefined;
   NearMeBTListScreen: undefined;
   NearMeMapScreen: undefined;
+  TouchScreen: undefined;
+  ProfileScreen: undefined;
+  ChatsScreen: undefined;
 }
 
 export type  ButtonComponentProps = {

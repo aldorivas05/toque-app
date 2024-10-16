@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, ImageSourcePropType, Image } from 'react-native';
 
-interface ProfileAvatarComponentProps {
+interface ChatAvatarComponentProps {
   borderColor?: string;
   profileImage: ImageSourcePropType;
   modeIcon: React.ReactNode; 
@@ -11,17 +11,13 @@ interface ProfileAvatarComponentProps {
   matchIcon?: React.ReactNode; 
 }
 
-const ProfileAvatarComponent: React.FC<ProfileAvatarComponentProps> = ({ 
-  borderColor, 
+const ChatAvatarComponent: React.FC<ChatAvatarComponentProps> = ({  
   profileImage, 
-  modeIcon, 
-  touchIcon, 
-  messageIcon, 
-  onLineIcon, 
-  matchIcon
+  modeIcon,  
+  onLineIcon,
  }) => {
   return (
-    <View style={[styles.container, { borderColor }]}>
+    <View style={[styles.container]}>
       <View style={styles.profileImageContainer}>
         <Image
           source={profileImage}
@@ -29,35 +25,15 @@ const ProfileAvatarComponent: React.FC<ProfileAvatarComponentProps> = ({
         />
       </View>
 
-      {matchIcon && (
-        <View style={styles.imageOverlay} />
-      )}
 
       <View style={styles.iconContainer}>
         {modeIcon}
       </View>
 
-      {touchIcon && (
-        <View style={styles.touchIconContainer}>
-          {touchIcon}
-        </View>
-      )}
-
-      {messageIcon && (
-        <View style={styles.messageIconContainer}>
-          {messageIcon}
-        </View>
-      )}
 
       {onLineIcon && (
         <View style={styles.onLineIconContainer}>
           {onLineIcon}
-        </View>
-      )}
-
-      {matchIcon && (
-        <View style={styles.matchIconContainer}>
-          {matchIcon}
         </View>
       )}
     </View>
@@ -66,14 +42,11 @@ const ProfileAvatarComponent: React.FC<ProfileAvatarComponentProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: 72,
-    height: 72,
+    width: 64,
+    height: 64,
     borderRadius: 36,
-    borderWidth: 4,
-    borderColor: 'rgba(255, 193, 7, 0.2)',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 4.5,
     position: 'relative',
   },
   profileImageContainer: {
@@ -95,28 +68,8 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     backgroundColor: '#fff',
     position: 'absolute',
-    top: '75%',
-    left: '75%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  touchIconContainer: {
-    width: '40%', 
-    height: '40%', 
-    borderRadius: 14,
-    position: 'absolute',
-    top: '-7%',
-    left: '-7%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  messageIconContainer: {
-    width: '40%', 
-    height: '40%',
-    borderRadius: 14,
-    position: 'absolute',
-    top: '-6%',
-    left: '-8%',
+    top: '60%',
+    left: '65%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -125,8 +78,8 @@ const styles = StyleSheet.create({
     height: '40%',
     borderRadius: 14,
     position: 'absolute',
-    top: '-10%',
-    left: '78%',
+    top: '-8%',
+    left: '66%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -139,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileAvatarComponent;
+export default ChatAvatarComponent;

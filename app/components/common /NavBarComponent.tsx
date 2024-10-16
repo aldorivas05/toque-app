@@ -1,48 +1,70 @@
 import React, { useState }   from "react";
+import { RootStackParams } from "@/App/types";
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { 
   View, 
   Text,
   StyleSheet, 
   TouchableOpacity 
 } from "react-native";
-import ChatsNavbarIcon      from "@/assets/icons/ChatsNavBarIcon";
-import NearMeNavBarIcon     from "@/assets/icons/NearMeNavBarIcon";
-import ProfileNavBarIcon    from "@/assets/icons/ProfileNavBarIcon";
-import TouchNavIcon         from "@/assets/icons/TocuhNavIcon";
+import TouchInactiveNavBarIcon from "@/assets/icons/TouchInactiveNavBarIcon";
+import TouchActiveNavBarIcon from "@/assets/icons/TouchActiveNavBarIcon";
+import NearMeInactiveNavBarIcon from "@/assets/icons/NearMeInactiveNavBarIcon";
+import NearMeActiveNavBarIcon from "@/assets/icons/NearMeActiveNavBarIcon";
+import ChatsInactiveNavBarIcon from "@/assets/icons/ChatsInactiveNavBarIcon";
+import ChatsActiveNavBarIcon from "@/assets/icons/ChatsActiveNavBarIcon";
+import ProfileInactiveNavBarIcon from "@/assets/icons/ProfileInactiveNavBarIcon";
+import ProfileActiveNavBarIcon from "@/assets/icons/ProfileActiveNavBarIcon";
+
+
+
+interface NavItem {
+  screen: keyof RootStackParams;
+  label: string;
+  iconInactive: React.ComponentType;
+  iconActive: React.ComponentType;
+}
+
+const navItems: NavItem[] = [
+  { screen: 'TouchScreen', label: 'Toque', iconInactive: TouchInactiveNavBarIcon, iconActive: TouchActiveNavBarIcon },
+  { screen: 'NearMeScreen', label: 'Cerca de mí', iconInactive: NearMeInactiveNavBarIcon, iconActive: NearMeActiveNavBarIcon },
+  { screen: 'ChatsScreen', label: 'Chats', iconInactive: ChatsInactiveNavBarIcon, iconActive: ChatsActiveNavBarIcon },
+  { screen: 'ProfileScreen', label: 'Perfil', iconInactive: ProfileInactiveNavBarIcon, iconActive: ProfileActiveNavBarIcon },
+];
 
 const NavBarComponent = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(1);
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
+  const handlePress = (index: number, screen: keyof RootStackParams) => {
+    setActiveIndex(index);
+    navigation.navigate(screen);
+  };
 
   return (
     <View style={styles.navBar}>
-
-      <TouchableOpacity style={styles.iconWrapper} onPress={() => setActiveIndex(0)}>
-        <View style={styles.iconContainer}>
-          <TouchNavIcon />
-        </View>
-        <Text style={styles.iconText}>Toque</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.iconWrapper} onPress={() => setActiveIndex(1)}>
-        <View style={styles.iconContainer}>
-          <NearMeNavBarIcon />
-        </View>
-        <Text style={[styles.iconText, styles.activeText]}>Cerca de mí</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.iconWrapper} onPress={() => setActiveIndex(2)}>
-        <View style={styles.iconContainer}>
-          <ChatsNavbarIcon />
-        </View>
-        <Text style={styles.iconText}>Chats</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.iconWrapper} onPress={() => setActiveIndex(3)}>
-        <View style={styles.iconContainer}>
-          <ProfileNavBarIcon />
-        </View>
-        <Text style={styles.iconText}>Perfil</Text>
-      </TouchableOpacity>
+      {navItems.map((item, index) => {
+        const Icon = index === activeIndex ? item.iconActive : item.iconInactive;
+        return (
+          <TouchableOpacity
+            key={index}
+            style={styles.iconWrapper}
+            onPress={() => handlePress(index, item.screen)}
+            accessible={true}
+            accessibilityLabel={`Navegar a ${item.label}`}
+          >
+            <View style={styles.iconContainer}>
+              <Icon />
+            </View>
+            <Text style={[
+              styles.iconText,
+              index === activeIndex && styles.activeText,
+            ]}>
+              {item.label}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };
@@ -50,8 +72,7 @@ const NavBarComponent = () => {
 const styles = StyleSheet.create({
   navBar: {
     width: '100%',
-    height: 68, 
-    minHeight: 68,
+    height: 68,
     borderRadius: 20,
     paddingHorizontal: 20,
     flexDirection: 'row',
@@ -69,8 +90,8 @@ const styles = StyleSheet.create({
     height: 56,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 8,
-    flex:1
+    flex: 1,
+    gap: 10
   },
   iconContainer: {
     justifyContent: 'center',
@@ -79,7 +100,7 @@ const styles = StyleSheet.create({
   iconText: {
     fontFamily: 'Inter_400Regular',
     fontSize: 10,
-    color: '#777777',
+    color: '#777',
   },
   activeText: {
     color: '#B4002D',

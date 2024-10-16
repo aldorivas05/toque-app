@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, ImageSourcePropType, TouchableOpacity } from "react-native";
-import ProfileAvatarComponent from "./ProfileAvatarComponent";
 import TextLinkBTListIcon from "@/assets/icons/TextLinkBTListIcon";
+import ProfileAvatarComponent from "./ProfileAvatarComponent";
 
 interface ItemBTNearMeProps {
   borderColor: string;
@@ -19,11 +19,9 @@ interface ItemBTNearMeProps {
 const ItemBTNearMe: React.FC<ItemBTNearMeProps> = ({ 
   borderColor, 
   profileImage, 
-  modeIcon, 
-  touchIcon,
+  modeIcon,
   messageIcon,
   onLineIcon,
-  matchIcon, 
   name, 
   age 
 }) => {
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 24,
-    paddingBottom: 16,
+    paddingBottom: 20,
   },
   informationText: {
     fontSize: 17,

@@ -125,12 +125,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Inter_400Regular',
     textAlign: 'center',
-    color: '#222'
+    color: '#222',
+    lineHeight: 24
   },
   boldText: {
     fontFamily: 'Inter_700Bold',
     fontSize: 16,
-    color: '#222'
+    color: '#222',
+    lineHeight: 24
   },
   indicatorContainer: {
     flexDirection: 'row',

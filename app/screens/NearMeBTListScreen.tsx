@@ -60,6 +60,7 @@ const people: People[] = [
 ];
 
 const NearMeBTListScreen = () => {
+  
   const renderItem = ({ item }: { item: People }) => {
     const borderColor = item.mode === 'fire' ? 'rgba(255, 193, 7, 0.2)' : 'rgba(220, 53, 69, 0.2)';
     const modeIcon = item.mode === 'fire' 
@@ -128,10 +129,9 @@ const styles = StyleSheet.create({
   },
   componentSection: {
     width: '100%',
-    height: 193,
     alignItems: 'center',
     paddingHorizontal: 24,
-    justifyContent: 'flex-end',
+    paddingTop: 75,
     paddingBottom: 12,
     top: 0,
     gap: 8,

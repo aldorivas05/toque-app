@@ -51,10 +51,6 @@ const NearMeScreen = () => {
         <DropdownComponent />
       </View>
       <View style={styles.contentSection}>
-        {/* <Image
-          source={require('../../assets/images/near-me-options-image.png')}
-          style={styles.image}
-        /> */}
         <NearMeOptionsImage />
         <Text style={styles.regularText}>
           No podemos acceder al mapa, por favor activa los{' '}
@@ -95,10 +91,9 @@ const styles = StyleSheet.create({
   },
   componentSection: {
     width: '100%',
-    height: 193,
     alignItems: 'center',
     paddingHorizontal: 24,
-    justifyContent: 'flex-end',
+    paddingTop: 75,
     paddingBottom: 12,
     top: 0,
     gap: 8,
@@ -135,12 +130,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Inter_400Regular',
     textAlign: 'center',
-    color: '#222'
+    color: '#222',
+    lineHeight: 24
   },
   boldText: {
     fontFamily: 'Inter_700Bold',
     fontSize: 16,
-    color: '#222'
+    color: '#222',
+    lineHeight: 24
   },
   buttonSection: {
     paddingHorizontal: 11,

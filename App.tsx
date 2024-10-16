@@ -14,6 +14,9 @@ import FilterScreen from './App/screens/FilterScreen';
 import CustomHeader from './App/components/common /CustomHeader';
 import NearMeScreen from './App/screens/NearMeScreen';
 import NearMeBTListScreen from './App/screens/NearMeBTListScreen';
+import TouchScreen from './App/screens/TouchScreen';
+import ProfileScreen from './App/screens/ProfileScreen';
+import ChatsScreen from './App/screens/ChatsScreen';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -63,6 +66,21 @@ export default function App() {
         <Stack.Screen 
           name="NearMeMapScreen"
           component={NearMeMapScreen} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="TouchScreen"
+          component={TouchScreen} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="ProfileScreen"
+          component={ProfileScreen} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="ChatsScreen"
+          component={ChatsScreen} 
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

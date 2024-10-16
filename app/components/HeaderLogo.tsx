@@ -1,29 +1,41 @@
+import ToqueLogoHeader from '@/assets/icons/ToqueLogoHeader';
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
+interface HeaderLogoProps {
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+}
 
-const HeaderLogo = () => {
+const HeaderLogo: React.FC<HeaderLogoProps> = ({ leftIcon, rightIcon }) => {
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/images/toqueLogo.png')} style={styles.image}/>
+
+      <View style={styles.iconContainer}>{leftIcon}</View>
+      
+      <ToqueLogoHeader />
+      
+      <View style={styles.iconContainer}>{rightIcon}</View>
+
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
+    display: 'flex',
     width: '100%',
-    zIndex: 1,
-    top: 50
+    paddingTop: 75,
+    paddingBottom: 8,
+    paddingHorizontal: 24,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
-  image: {
-      width: 84,
-      height:36
-  }
-})
+  iconContainer: {
+    width: 24,
+    height: 24,
+  },
+});
 
 export default HeaderLogo;
