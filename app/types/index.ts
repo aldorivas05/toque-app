@@ -8,6 +8,7 @@ export type RootStackParams = {
   TouchScreen: undefined;
   ProfileScreen: undefined;
   ChatsScreen: undefined;
+  ChatDetailsScreen: undefined;
 }
 
 export type  ButtonComponentProps = {

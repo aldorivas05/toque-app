@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#B4002D',
   },
   inactiveIndicator: {
-    backgroundColor: '#CCCCCC',
+    backgroundColor: '#CCC',
   },
   buttonContainer: {
     position: 'absolute',

@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
+    backgroundColor: '#FFF'
   },
   headerSection: {
     width: '100%',

@@ -5,19 +5,19 @@ import {
   StyleSheet, 
   TouchableOpacity} from 'react-native';
 
-interface CustomInputComponentProps {
+interface InputChatMessageProps {
   leftIcon?: JSX.Element,
   rightIcon?: JSX.Element,
   onRightIconPress?: () => void;
 }
 
-const CustomInputComponent: React.FC<CustomInputComponentProps> = ({leftIcon, rightIcon, onRightIconPress}) => {
+const InputChatMessage: React.FC<InputChatMessageProps> = ({leftIcon, rightIcon, onRightIconPress}) => {
   return (
     <View style={styles.container}>
   
       {leftIcon && <View style={styles.leftIcon}>{leftIcon}</View>}
     
-      <TextInput style={styles.input} placeholder={"Buscar"} />
+      <TextInput style={styles.input} placeholder={"Escribe un mensaje"} />
 
       {rightIcon && <TouchableOpacity onPress={onRightIconPress} style={styles.rightIcon}>{rightIcon}</TouchableOpacity>}
     </View>
@@ -32,13 +32,10 @@ const styles = StyleSheet.create({
     height: 50,
     paddingLeft: 16,
     paddingRight: 5,
+    borderWidth: 1,
     borderRadius: 28,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.08, 
-    shadowRadius: 16,
-    elevation: 5, 
+    backgroundColor: 'transparent',
+    borderColor: '#CCC',
     fontSize: 16,
     fontFamily: 'Inter_400Regular',
   },
@@ -62,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomInputComponent;
+export default InputChatMessage;

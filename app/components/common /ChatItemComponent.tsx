@@ -3,6 +3,9 @@ import { View, StyleSheet, Text, ImageSourcePropType, TouchableOpacity } from "r
 import NewMessIndicatorIcon from "@/assets/icons/NewMessIndicatorIcon";
 import ChatAvatarComponent from "./ChatAvatarComponent";
 import GoToChatArrow from "@/assets/icons/GoToChatArrowIcon";
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParams } from '../../types';
+
 
 interface ChatItemComponentProps {
   profileImage: ImageSourcePropType;
@@ -32,6 +35,8 @@ const ChatItemComponent: React.FC<ChatItemComponentProps> = ({
   age 
 }) => {
 
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
   const maxLength = 25;
 
   return (
@@ -58,7 +63,10 @@ const ChatItemComponent: React.FC<ChatItemComponentProps> = ({
           <Text style={styles.timeInfoText}>6.28 AM</Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.textLinkContainer}>
+      <TouchableOpacity 
+      style={styles.textLinkContainer}
+      onPress={() => navigation.navigate('ChatDetailsScreen')}
+      >
       {mensajeNuevo && (
         <NewMessIndicatorIcon />
       )}
