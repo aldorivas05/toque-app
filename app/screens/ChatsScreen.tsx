@@ -9,6 +9,7 @@ import ChatItemComponent from "../components/common /ChatItemComponent";
 import PartyModeIcon from "@/assets/icons/PartyModeIcon";
 import RomanceModeIcon from "@/assets/icons/RomanceModeIcon";
 import ActiveAvatarIcon from "@/assets/icons/OnLineAvatarIcon";
+import { LinearGradient }               from 'expo-linear-gradient';
 
 
 
@@ -22,6 +23,11 @@ type People = {
   mensajeNuevo: boolean;
   mensajeCorto: string;
 };
+
+const gradientColors = [
+  '#F6F6F6',
+  'rgba(246, 246, 246, 0.00)'
+];
 
 const people: People[] = [
   { id: 1, name: 'Ana', mode: 'fire', image: require('../../assets/images/image.png'), onLine: true, edad: 25, mensajeNuevo: true, mensajeCorto: "Hola, ¿cómo estás?, sabes que el otro dia te vi por ahi" },
@@ -47,12 +53,11 @@ const people: People[] = [
 ];
 
 const ChatsScreen = () => {
-  
-  const renderItem = ({ item }: { item: People }) => {
 
+  const renderItem = ({ item }: { item: People }) => {
     const modeIcon = item.mode === 'fire' 
       ? <PartyModeIcon />  
-      : <RomanceModeIcon />
+      : <RomanceModeIcon />;
     const onLineIcon = item.onLine ? <ActiveAvatarIcon /> : undefined;
 
     return (
@@ -64,59 +69,83 @@ const ChatsScreen = () => {
         age={item.edad}
         mensajeCorto={item.mensajeCorto}
         mensajeNuevo={item.mensajeNuevo}   
-        />
+      />
     );
   };
+
+  const renderHeader = () => (
+    <View style={styles.chatQuantityContainer}>
+      <Text style={styles.chatQuantityText}>
+        Chats ({people.length})
+      </Text>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
       <View style={styles.headerSection}>
+        <LinearGradient
+          colors={gradientColors}
+          start={{ x: 0.5, y: 0.2 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.background}
+        />
         <View style={styles.inputContainer}>
           <View style={styles.customInputWrapper}>
             <CustomInputComponent 
               leftIcon={<PersonInputIcon />}
               rightIcon={<SearchInputIcon />}
-              onRightIconPress={ () => {}}
+              onRightIconPress={() => {}}
             />
           </View>
           <View style={styles.notificationIconContainer}>
             <NotificationsIcon />
           </View>
         </View>
-        <View style={styles.chatQuantityContainer}>
-          <Text style={styles.chatQuantityText}>
-          Chats ({people.length})
-          </Text>
-        </View>
       </View>
+
       <FlatList
         data={people}
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
+        ListHeaderComponent={renderHeader} // Agregamos el encabezado aquí
+        style={styles.flatListStyle}
         horizontal={false}
       />
+
       <View style={styles.navBarContainer}>
+        <LinearGradient
+          colors={gradientColors}
+          start={{ x: 0.5, y: 1 }}
+          end={{ x: 0.5, y: 0.2 }}
+          style={styles.background}
+        />
         <NavBarComponent />
       </View>
     </View>
   );
 };
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
   },
   headerSection: {
     width: '100%',
     paddingHorizontal: 24,
-    justifyContent: 'flex-start',
+    position: 'absolute',
+    top: 0,
+    height: 147,
     paddingBottom: 20,
-    paddingTop: 75
+    paddingTop: 75,
+    zIndex: 1,
+  },
+  background: {
+    ...StyleSheet.absoluteFillObject,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -135,7 +164,8 @@ const styles = StyleSheet.create({
   chatQuantityContainer: {
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    paddingTop: 31
+    paddingBottom: 20,
+    paddingLeft: 24,
   },
   chatQuantityText: {
     fontFamily: 'Inter_400Regular',
@@ -143,15 +173,19 @@ const styles = StyleSheet.create({
     color: '#222',
   },
   listContent: {
-
+    paddingTop: 160,
+    paddingBottom: 80,
+  },
+  flatListStyle: {
+    flex: 1,
   },
   navBarContainer: {
     paddingHorizontal: 24,
     paddingBottom: 24,
-    justifyContent: 'flex-end',
-  }
-})
-
-
+    position: 'absolute',
+    bottom: 0,
+    zIndex: 1,
+  },
+});
 
 export default ChatsScreen;

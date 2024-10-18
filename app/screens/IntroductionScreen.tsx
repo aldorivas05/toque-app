@@ -23,7 +23,9 @@ const IntroductionScreen = () => {
         style={styles.background}
       />
       <HeaderLogo />
-      <Carousel />
+      <View style={styles.carouselContainer}>
+        <Carousel />
+      </View>
     </View>
   );
 };
@@ -35,6 +37,11 @@ const styles = StyleSheet.create({
   },
   background: {
     ...StyleSheet.absoluteFillObject,
+  },
+  carouselContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

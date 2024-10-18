@@ -13,6 +13,7 @@ import {
 import ButtonComponent from './common /ButtonComponent';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParams } from '../types';
+import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 
 
@@ -47,13 +48,9 @@ const data: Slide[] = [
 ];
 
 const Carousel: React.FC = () => {
-
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
-
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   
-  
-
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / Dimensions.get('window').width);
     setCurrentIndex(index);
@@ -79,66 +76,73 @@ const Carousel: React.FC = () => {
         showsHorizontalScrollIndicator={false}
         onScroll={onScroll}
       />
-      <View style={styles.indicatorContainer}>
-        {data.map((_, index) => (
-          <View
-            key={`carousel-item-${index}`}
-            style={[
-              styles.indicator,
-              currentIndex === index ? styles.activeIndicator : styles.inactiveIndicator
-            ]}
-          />
-        ))}
-      </View>
-      {currentIndex === data.length - 1 && (
-        <View style={styles.buttonContainer}>
+      <View style={styles.footerContainer}>
+        <View style={styles.indicatorContainer}>
+          {data.map((_, index) => (
+            <View
+              key={`carousel-item-${index}`}
+              style={[
+                styles.indicator,
+                currentIndex === index ? styles.activeIndicator : styles.inactiveIndicator
+              ]}
+            />
+          ))}
+        </View>
+        {currentIndex === data.length - 1 && (
           <ButtonComponent 
             title="Empezar" 
             color="#B4002D"
             onPress={() => navigation.navigate('NearMeScreen')}
           />
-        </View>
-      )}
+        )}
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   itemContainer: {
-    width,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
+    width: width, 
+    justifyContent: 'center', 
     alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingBottom: 100
   },
   image: {
     width: 320,
     height: 200,
     resizeMode: 'contain',
-    marginBottom: 20
+    marginBottom: 20,
   },
   text: {
     fontSize: 16,
     fontFamily: 'Inter_400Regular',
     textAlign: 'center',
     color: '#222',
-    lineHeight: 24
+    lineHeight: 24,
   },
   boldText: {
     fontFamily: 'Inter_700Bold',
     fontSize: 16,
     color: '#222',
-    lineHeight: 24
+    lineHeight: 24,
+  },
+  footerContainer: {
+    position: 'absolute',
+    alignItems: 'center',
+    width: '100%',
+    paddingHorizontal: 24,
+    paddingBottom: 24,
+    bottom: 0,
+    height: 100,
   },
   indicatorContainer: {
     flexDirection: 'row',
-    marginTop: 20,
-    position: 'absolute',
-    bottom: 90,
+    marginBottom: 16,
   },
   indicator: {
     height: 7,
@@ -151,13 +155,6 @@ const styles = StyleSheet.create({
   },
   inactiveIndicator: {
     backgroundColor: '#CCC',
-  },
-  buttonContainer: {
-    position: 'absolute',
-    bottom: 24,
-    width: '100%',
-    paddingHorizontal: 24,
-    alignItems: 'center',
   },
 });
 

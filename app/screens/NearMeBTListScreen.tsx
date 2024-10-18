@@ -20,6 +20,12 @@ const gradientColors = [
   'rgba(180, 0, 45, 0)',
   'rgba(180, 0, 45, 0)',
   'rgba(180, 0, 45, 0.1)',
+
+];
+
+const gradientComponentColors = [
+  'rgba(236, 217, 222, 1)',
+  'rgba(246, 246, 246, 0.00)'
 ];
 
 type People = {
@@ -91,6 +97,12 @@ const NearMeBTListScreen = () => {
         style={styles.background}
       />
       <View style={styles.componentSection}>
+        <LinearGradient
+          colors={gradientComponentColors}
+          start={{ x: 0.5, y: 0.2 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.background}
+        />
         <View style={styles.inputContainer}>
           <View style={styles.customInputWrapper}>
             <CustomInputComponent 
@@ -116,6 +128,12 @@ const NearMeBTListScreen = () => {
       />
 
       <View style={styles.navBarContainer}>
+        <LinearGradient
+            colors={gradientComponentColors}
+            start={{ x: 0.5, y: 1 }}
+            end={{ x: 0.5, y: 0.2 }}
+            style={styles.background}
+          />
         <NavBarComponent />
       </View>
     </View>
@@ -126,6 +144,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: '#FFF'
   },
   componentSection: {
     width: '100%',
@@ -133,8 +152,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 75,
     paddingBottom: 12,
+    position: 'absolute',
     top: 0,
     gap: 8,
+    zIndex: 1,
   },
   background: {
     ...StyleSheet.absoluteFillObject,
@@ -154,12 +175,15 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   listContent: {
-    paddingVertical: 8,
+    paddingTop: 208,
+    paddingBottom: 80,
   },
   navBarContainer: {
     paddingHorizontal: 24,
     paddingBottom: 24,
-    justifyContent: 'flex-end',
+    bottom: 0,
+    position: 'absolute',
+    zIndex: 1,
   },
 });
 

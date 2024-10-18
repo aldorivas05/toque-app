@@ -5,7 +5,6 @@ import InputChatMessage from "../components/common /InputChatMessage";
 import SentMessageChatBubble from "../components/common /SentMessageChatBubble";
 import ReceivedMessageChatBubble from "../components/common /ReceivedMessageChatBubble";
 
-
 type Message = {
   id: string;
   type: 'sent' | 'received';
@@ -26,16 +25,13 @@ const messages: Message[] = [
   { id: '9', type: 'received', text: 'Este es un mensaje de prueba recibido', date: '2024-09-29' },
   { id: '10', type: 'received', text: 'Este es un mensaje de prueba recibido', date: '2024-09-29' },
   { id: '11', type: 'received', text: 'Este es un mensaje de prueba recibido', date: '2024-09-29' },
-
 ];
-
 
 const ChatDetailsScreen: React.FC = () => {
 
   const renderItem: ListRenderItem<Message> = ({ item }) => {
-
     const isToday = item.date === new Date().toISOString().split('T')[0];
-    
+
     return (
       <View>
         {isToday && (
@@ -50,20 +46,24 @@ const ChatDetailsScreen: React.FC = () => {
     );
   };
 
-  return (
-    <View style={styles.container}>
-
+  const renderInitialMessage = () => (
+    <View style={styles.initialMessageContainer}>
       <Text style={styles.initialConversationText}>
         Iniciaste una conversación con Alejandra{"\n"}29 Sep, 2024
       </Text>
+    </View>
+  );
 
-  
+  return (
+    <View style={styles.container}>
       <FlatList
         data={messages}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.chatContentContainer}
         showsVerticalScrollIndicator={false}
+        inverted={true}
+        ListFooterComponent={messages.length > 0 ? renderInitialMessage : null}
       />
 
       <View style={styles.writingContainer}>
@@ -77,7 +77,6 @@ const ChatDetailsScreen: React.FC = () => {
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -104,14 +103,15 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: 'flex-start',
   },
+  initialMessageContainer: {
+    marginVertical: 20,
+    alignItems: 'center',
+  },
   initialConversationText: {
     color: '#777',
     textAlign: 'center',
-    // leadingTrim: 'both',
-    // textEdge: 'cap',
-    marginVertical: 20,
     fontFamily: 'Inter_400Regular',
-    fontSize: 12
+    fontSize: 12,
   },
   todayText: {
     color: '#777',
@@ -139,3 +139,6 @@ const styles = StyleSheet.create({
 });
 
 export default ChatDetailsScreen;
+
+
+
