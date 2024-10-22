@@ -21,6 +21,7 @@ import ChatDetailsScreen from './App/screens/ChatDetailsScreen';
 import ChatDetailsHeader from './App/components/ChatDetailsHeader';
 import LoginScreen from './App/screens/LoginScreen';
 import RegistrationScreen from './App/screens/RegistrationScreen';
+import PasswordRecoveryScreen from './App/screens/PasswordRecoveryScreen';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -101,6 +102,11 @@ export default function App() {
           name="RegistrationScreen" 
           component={RegistrationScreen} 
           options={{ header: () => <CustomHeader title='Crear cuenta'/> }}
+        />
+        <Stack.Screen 
+          name="PasswordRecoveryScreen" 
+          component={PasswordRecoveryScreen} 
+          options={{ header: () => <CustomHeader title='¿Olvidaste tu contraseña?'/> }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -12,7 +12,7 @@ interface MultiSliderProps {
 const { width } = Dimensions.get('window');
 
 const MultiSliderRange: React.FC<MultiSliderProps> = ({ title, minValue, maxValue }) => {
-  const [sliderValues, setSliderValues] = useState([minValue, maxValue]);
+  const [sliderValues, setSliderValues] = useState([minValue, minValue + 20]);
 
   const onValuesChange = (values: React.SetStateAction<number[]>) => {
     setSliderValues(values);
@@ -36,7 +36,7 @@ const MultiSliderRange: React.FC<MultiSliderProps> = ({ title, minValue, maxValu
         customMarkerRight={(e) => <CustomSliderMarker currentValue={e.currentValue} />}
         selectedStyle={{ backgroundColor: '#B4002D', height: 1 }}
         unselectedStyle={{ backgroundColor: '#CCCCCC', height: 1 }}
-        sliderLength={width - 68}
+        sliderLength={width - 78}
       />
     </View>
   );

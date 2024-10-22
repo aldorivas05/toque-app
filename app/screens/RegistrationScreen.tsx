@@ -232,7 +232,7 @@ const RegistrationScreen = () => {
         <Text style={styles.subtitleInputTex}>Elije una contraseña</Text>
         <View style={styles.phoneInputsContainer}>
           <TransparentCustomInput 
-          placeholder="**********"
+          placeholder="••••••••"
           rightIcon={<EyeInputFormIcon />}
           />
         </View>
@@ -362,7 +362,7 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    paddingVertical: 24
+    paddingVertical: 24,
   },
   termsConditionsTextContainer: {
     flex: 1,
@@ -375,12 +375,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_400Regular',
     fontSize: 12,
     color: '#777',
+    lineHeight: 16
   },
   termsConditionsText: {
     fontSize: 12,
     fontFamily: 'Inter_400Regular',
     color: '#B4002D',
-    lineHeight: 20,
+    lineHeight: 16
   },
   privacyPolicyTextContainer: {
     justifyContent: 'center',
@@ -391,10 +392,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Inter_400Regular',
     color: '#B4002D',
-    lineHeight: 20,
+    lineHeight: 16
   },
   buttonContainer: {
-    paddingBottom: 200
+    paddingBottom: 100
   }
 });
 
