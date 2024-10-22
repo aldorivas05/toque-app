@@ -19,6 +19,8 @@ import ProfileScreen from './App/screens/ProfileScreen';
 import ChatsScreen from './App/screens/ChatsScreen';
 import ChatDetailsScreen from './App/screens/ChatDetailsScreen';
 import ChatDetailsHeader from './App/components/ChatDetailsHeader';
+import LoginScreen from './App/screens/LoginScreen';
+import RegistrationScreen from './App/screens/RegistrationScreen';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -58,7 +60,7 @@ export default function App() {
         <Stack.Screen 
           name="FilterScreen" 
           component={FilterScreen} 
-          options={{ header: () => <CustomHeader /> }}
+          options={{ header: () => <CustomHeader title='Filtrar'/> }}
         />
         <Stack.Screen 
           name="NearMeBTListScreen"
@@ -89,6 +91,16 @@ export default function App() {
           name="ChatDetailsScreen" 
           component={ChatDetailsScreen} 
           options={{ header: () => <ChatDetailsHeader /> }}
+        />
+        <Stack.Screen 
+          name="LoginScreen" 
+          component={LoginScreen} 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="RegistrationScreen" 
+          component={RegistrationScreen} 
+          options={{ header: () => <CustomHeader title='Crear cuenta'/> }}
         />
       </Stack.Navigator>
     </NavigationContainer>

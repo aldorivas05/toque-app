@@ -29,7 +29,7 @@ const navItems: NavItem[] = [
   { screen: 'TouchScreen', label: 'Toque', iconInactive: TouchInactiveNavBarIcon, iconActive: TouchActiveNavBarIcon },
   { screen: 'NearMeScreen', label: 'Cerca de mí', iconInactive: NearMeInactiveNavBarIcon, iconActive: NearMeActiveNavBarIcon },
   { screen: 'ChatsScreen', label: 'Chats', iconInactive: ChatsInactiveNavBarIcon, iconActive: ChatsActiveNavBarIcon },
-  { screen: 'ProfileScreen', label: 'Perfil', iconInactive: ProfileInactiveNavBarIcon, iconActive: ProfileActiveNavBarIcon },
+  { screen: 'LoginScreen', label: 'Perfil', iconInactive: ProfileInactiveNavBarIcon, iconActive: ProfileActiveNavBarIcon },
 ];
 
 const NavBarComponent = () => {

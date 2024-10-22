@@ -9,6 +9,8 @@ export type RootStackParams = {
   ProfileScreen: undefined;
   ChatsScreen: undefined;
   ChatDetailsScreen: undefined;
+  LoginScreen: undefined;
+  RegistrationScreen: undefined;
 }
 
 export type  ButtonComponentProps = {
@@ -16,4 +18,7 @@ export type  ButtonComponentProps = {
   color: string;
   iconName?: string;
   onPress: any;
+  icon?: React.ReactNode;
+  borderColor?: string;
+  textColor?: string;
 }

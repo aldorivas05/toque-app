@@ -1,31 +1,46 @@
-import React  from 'react';
+import React from 'react';
 import { 
   View, 
   TextInput, 
   StyleSheet, 
-  TouchableOpacity} from 'react-native';
+  TouchableOpacity 
+} from 'react-native';
 
-interface InputChatMessageProps {
-  leftIcon?: JSX.Element,
-  rightIcon?: JSX.Element,
+interface TransparentCustomInputProps {
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
   onRightIconPress?: () => void;
+  placeholder?: string;
 }
 
-const InputChatMessage: React.FC<InputChatMessageProps> = ({leftIcon, rightIcon, onRightIconPress}) => {
+const TransparentCustomInput: React.FC<TransparentCustomInputProps> = ({
+  leftIcon, 
+  rightIcon, 
+  onRightIconPress, 
+  placeholder = "Escribe un mensaje"
+}) => {
   return (
     <View style={styles.container}>
-  
       {leftIcon && <View style={styles.leftIcon}>{leftIcon}</View>}
     
-      <TextInput style={styles.input} placeholder={"Escribe un mensaje"} />
 
-      {rightIcon && <TouchableOpacity onPress={onRightIconPress} style={styles.rightIcon}>{rightIcon}</TouchableOpacity>}
+      <TextInput 
+        style={styles.input} 
+        placeholder={placeholder}
+      />
+
+      {rightIcon && (
+        <TouchableOpacity onPress={onRightIconPress} style={styles.rightIcon}>
+          {rightIcon}
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
@@ -40,7 +55,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_400Regular',
   },
   input: {
-    flex:1,
+    flex: 1,
     height: '100%',
   },
   leftIcon: {
@@ -59,4 +74,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InputChatMessage;
+export default TransparentCustomInput;
+

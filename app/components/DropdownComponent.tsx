@@ -10,7 +10,7 @@ const DropdownComponent = () => {
 
   const optionsMode1 = [
     { label: 'Romance', value: 'Romance' },
-    { label: 'Fuego', value: 'Fuego' },
+    { label: 'Fiesta', value: 'Fiesta' },
   ];
 
   const optionsMode2 = [

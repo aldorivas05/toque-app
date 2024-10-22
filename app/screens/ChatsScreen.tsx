@@ -110,7 +110,7 @@ const ChatsScreen = () => {
         keyExtractor={(item) => item.id.toString()}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
-        ListHeaderComponent={renderHeader} // Agregamos el encabezado aquí
+        ListHeaderComponent={renderHeader}
         style={styles.flatListStyle}
         horizontal={false}
       />

@@ -1,18 +1,19 @@
-import BackIcon from '@/assets/icons/BackIcon';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import BackIcon from '@/assets/icons/BackIcon';
 
+interface CustomHeaderProps {
+  title: string;
+}
 
-const CustomHeader: React.FC = () => {
+const CustomHeader: React.FC<CustomHeaderProps> = ({ title }) => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.iconContainer}>
         <BackIcon />
       </View>
-      <Text style={styles.headerText}>Filtrar</Text>
-      <View style={styles.iconContainer}>
-  
-      </View>
+      <Text style={styles.headerText}>{title}</Text>
+      <View style={styles.iconContainer} />
     </View>
   );
 };
@@ -47,3 +48,4 @@ const styles = StyleSheet.create({
 });
 
 export default CustomHeader;
+

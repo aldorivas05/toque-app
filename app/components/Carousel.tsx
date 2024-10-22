@@ -92,7 +92,7 @@ const Carousel: React.FC = () => {
           <ButtonComponent 
             title="Empezar" 
             color="#B4002D"
-            onPress={() => navigation.navigate('NearMeScreen')}
+            onPress={() => navigation.navigate('LoginScreen')}
           />
         )}
       </View>

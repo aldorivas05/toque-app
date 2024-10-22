@@ -1,9 +1,9 @@
 import React from "react";
 import { View, StyleSheet, FlatList, Text, ListRenderItem, ViewStyle } from "react-native";
 import SendMessageIcon from "@/assets/icons/SentMessageIcon";
-import InputChatMessage from "../components/common /InputChatMessage";
 import SentMessageChatBubble from "../components/common /SentMessageChatBubble";
 import ReceivedMessageChatBubble from "../components/common /ReceivedMessageChatBubble";
+import TransparentCustomInput from "../components/common /TransparentCustomInput";
 
 type Message = {
   id: string;
@@ -68,7 +68,7 @@ const ChatDetailsScreen: React.FC = () => {
 
       <View style={styles.writingContainer}>
         <View style={styles.inputContainer}>
-          <InputChatMessage />
+          <TransparentCustomInput />
         </View>
         <View style={styles.sentIconContainer}>
           <SendMessageIcon />
