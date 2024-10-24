@@ -1,10 +1,10 @@
-import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import HeaderLogo from "../components/HeaderLogo";
-import NotificationsHeaderIcon from "@/assets/icons/NotificationsHeaderIcon";
-import TouchImageScreen from "@/assets/images/TouchImageScreen";
-import NavBarComponent from "../components/common /NavBarComponent";
+import React                        from "react";
+import { LinearGradient }           from "expo-linear-gradient";
+import { View, StyleSheet, Text,  } from "react-native";
+import HeaderLogo                   from "../components/HeaderLogo";
+import NotificationsHeaderIcon      from "@/assets/icons/NotificationsHeaderIcon";
+import TouchImageScreen             from "@/assets/images/TouchImageScreen";
+import NavBarComponent              from "../components/common /NavBarComponent";
 
 
 const gradientColors = [
@@ -47,12 +47,12 @@ const styles = StyleSheet.create({
     flex: 1,
     position: 'relative',
     alignItems: 'center',
-    justifyContent: 'space-between'
   },
   background: {
     ...StyleSheet.absoluteFillObject,
   },
   contentContainer: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 34,
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   navBarContainer: {
     paddingHorizontal: 24,
     paddingBottom: 24,
+    paddingTop: 36
   }
 });
 

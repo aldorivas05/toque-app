@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, ImageSourcePropType, TouchableOpacity } from "react-native";
 import TextLinkBTListIcon from "@/assets/icons/TextLinkBTListIcon";
-import ProfileAvatarComponent from "./ProfileAvatarComponent";
+import AvatarComponent from "./AvatarComponent";
 
 interface ItemBTNearMeProps {
   borderColor: string;
@@ -28,7 +28,7 @@ const ItemBTNearMe: React.FC<ItemBTNearMeProps> = ({
   return (
     <View style={styles.container}>
       <View style={styles.personalInfoContainer}>
-        <ProfileAvatarComponent
+        <AvatarComponent
           borderColor={borderColor}
           profileImage={profileImage}
           modeIcon={modeIcon}

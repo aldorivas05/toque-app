@@ -22,7 +22,7 @@ interface NavItemProps {
   onPress: () => void;
 }
 
-const NavBarComponent = () => {
+const NavBarComponente = () => {
   const [activeScreen, setActiveScreen] = useState<keyof RootStackParams>("TouchScreen");
   const navigation = useNavigation<NavigationProp<RootStackParams>>();
 
@@ -107,6 +107,7 @@ const NavItem: React.FC<NavItemProps> = ({ label, InactiveComponent, ActiveCompo
 
 const styles = StyleSheet.create({
   container: {
+    // flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -171,5 +172,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NavBarComponent;
+export default NavBarComponente;
 

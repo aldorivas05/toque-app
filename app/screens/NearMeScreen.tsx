@@ -1,16 +1,19 @@
-import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
-import CustomInputComponent from "../components/common /CustomInputComponent";
-import CurrentPositionIcon from "@/assets/icons/CurrentPositionIcon";
-import FilterIcon from "@/assets/icons/FilterIcon";
-import NotificationsIcon from "@/assets/icons/NotificationsIcon";
-import DropdownComponent from "../components/DropdownComponent";
-import NavBarComponent from "../components/common /NavBarComponent";
-import { LinearGradient } from "expo-linear-gradient";
-import FilterScreenButton from "../components/common /FilterButton";
-import NearMeOptionsImage from "@/assets/images/NearMeOptionsImage";
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { RootStackParams } from "../types";
+import React                      from "react";
+import { View, StyleSheet, Text } from "react-native";
+import CustomInputComponent       from "../components/common /CustomInputComponent";
+import CurrentPositionIcon        from "@/assets/icons/CurrentPositionIcon";
+import FilterIcon                 from "@/assets/icons/FilterIcon";
+import NotificationsIcon          from "@/assets/icons/NotificationsIcon";
+import DropdownComponent          from "../components/DropdownComponent";
+import NavBarComponent            from "../components/common /NavBarComponent";
+import { LinearGradient }         from "expo-linear-gradient";
+import FilterScreenButton         from "../components/common /FilterButton";
+import NearMeOptionsImage         from "@/assets/images/NearMeOptionsImage";
+import { RootStackParams }        from "../types";
+import { 
+  NavigationProp, 
+  useNavigation 
+} from '@react-navigation/native';
 
 
 const gradientColors = [
@@ -82,12 +85,10 @@ const NearMeScreen = () => {
 
 
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   componentSection: {
     width: '100%',
@@ -95,7 +96,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 75,
     paddingBottom: 12,
-    top: 0,
     gap: 8,
   },
   background: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   contentSection: {
-    flex: 1,
+    flex: 1, 
     paddingHorizontal: 44,
     alignItems: 'center',
     justifyContent: 'center',
@@ -144,14 +144,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 8
+    gap: 8,
   },
   navBarContainer: {
     paddingHorizontal: 24,
     paddingBottom: 24,
-    justifyContent: 'flex-end'
+    paddingTop: 36
   }
 });
-
 
 export default NearMeScreen;

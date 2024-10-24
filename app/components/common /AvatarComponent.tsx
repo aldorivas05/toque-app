@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, ImageSourcePropType, Image } from 'react-native';
 
-interface ProfileAvatarComponentProps {
+interface AvatarComponentProps {
   borderColor?: string;
   profileImage: ImageSourcePropType;
   modeIcon: React.ReactNode; 
@@ -11,7 +11,7 @@ interface ProfileAvatarComponentProps {
   matchIcon?: React.ReactNode; 
 }
 
-const ProfileAvatarComponent: React.FC<ProfileAvatarComponentProps> = ({ 
+const AvatarComponent: React.FC<AvatarComponentProps> = ({ 
   borderColor, 
   profileImage, 
   modeIcon, 
@@ -139,4 +139,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileAvatarComponent;
+export default AvatarComponent;

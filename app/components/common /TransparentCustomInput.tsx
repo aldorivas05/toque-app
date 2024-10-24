@@ -40,13 +40,14 @@ const TransparentCustomInput: React.FC<TransparentCustomInputProps> = ({
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
     height: 50,
     paddingLeft: 16,
     paddingRight: 5,
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderRadius: 28,
     backgroundColor: 'transparent',
     borderColor: '#CCC',

@@ -13,7 +13,6 @@ import {
 import ButtonComponent from './common /ButtonComponent';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParams } from '../types';
-import { black } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
 
 
 

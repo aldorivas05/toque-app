@@ -1,21 +1,20 @@
 import React                            from 'react';
-import { View, StyleSheet, ImageProps } from 'react-native';
-import MapView, { Marker, PROVIDER_GOOGLE }              from 'react-native-maps';
 import CustomInputComponent             from '../components/common /CustomInputComponent';
 import CurrentPositionIcon              from '@/assets/icons/CurrentPositionIcon';
 import NotificationsIcon                from '@/assets/icons/NotificationsIcon';
 import FilterIcon                       from '@/assets/icons/FilterIcon';
-import ProfileAvatarComponent           from '../components/common /ProfileAvatarComponent';
+import AvatarComponent                  from '../components/common /AvatarComponent';
 import DropdownComponent                from '../components/DropdownComponent';
 import NavBarComponent                  from '../components/common /NavBarComponent';
 import { LinearGradient }               from 'expo-linear-gradient';
 import { NavigationProp, useNavigation }from '@react-navigation/native';
 import { RootStackParams }              from '../types';
-import PartyModeIcon from '@/assets/icons/PartyModeIcon';
-import RomanceModeIcon from '@/assets/icons/RomanceModeIcon';
-import MatchTouchIcon from '@/assets/icons/MatchTouchIcon';
-import TouchIcon from '@/assets/icons/TouchIcon';
-import TouchProfileIcon from '@/assets/icons/TouchProfileIcon';
+import PartyModeIcon                    from '@/assets/icons/PartyModeIcon';
+import RomanceModeIcon                  from '@/assets/icons/RomanceModeIcon';
+import MatchTouchIcon                   from '@/assets/icons/MatchTouchIcon';
+import TouchProfileIcon                 from '@/assets/icons/TouchProfileIcon';
+import { View, StyleSheet, ImageProps } from 'react-native';
+import MapView, { Marker, PROVIDER_GOOGLE }  from 'react-native-maps';
 
 interface People {
   id: number;
@@ -239,7 +238,7 @@ const NearMeMapScreen: React.FC = () => {
               coordinate={{ latitude: person.latitude, longitude: person.longitude }}
               title={person.name}
             >
-              <ProfileAvatarComponent
+              <AvatarComponent
                 borderColor={borderColor}
                 profileImage={person.image}
                 modeIcon={modeIcon}
@@ -273,6 +272,12 @@ const NearMeMapScreen: React.FC = () => {
         <DropdownComponent />
       </View>
       <View style={styles.navBarContainer}>
+        <LinearGradient
+          colors={gradientColors}
+          start={{ x: 0.5, y: 1 }}
+          end={{ x: 0.5, y: 0.2 }}
+          style={styles.background}
+        />
         <NavBarComponent />
       </View>
     </View>
@@ -318,9 +323,11 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   navBarContainer: {
-    bottom: 90,
-    flex:1,
-    paddingHorizontal: 24
+    paddingHorizontal: 24,
+    paddingBottom: 24,
+    position: 'absolute',
+    bottom: 0,
+    zIndex: 1,
   }
 });
 
