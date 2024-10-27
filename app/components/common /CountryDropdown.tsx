@@ -11,7 +11,7 @@ const CountryDropdown = () => {
 
   const countryOptions = [
     { label: 'United States', value: 'USA' },
-    { label: 'Spain', value: 'ESP' },
+    { label: 'España', value: 'ESP' },
     { label: 'Mexico', value: 'MEX' },
     { label: 'Colombia', value: 'COL' },
   ];

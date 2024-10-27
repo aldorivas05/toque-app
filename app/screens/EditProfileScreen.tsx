@@ -1,34 +1,29 @@
 import React, { useState }             from "react";
-import PhoneCodeDropdown               from "../components/PhoneCodeDropdown";
 import TransparentCustomInput          from "../components/common /TransparentCustomInput";
-import CountryDropdown                 from "../components/common /CountryDropdown";
+import PadlockFormIcon                 from "@/assets/icons/PadlockFormIcon";
 import SelectionComponent              from "../components/common /SelectionComponent";
 import WomenSelectionComponentIcon     from "@/assets/icons/WomenSelectionComponentIcon";
+import CountryDropdown                 from "../components/common /CountryDropdown";
 import MenSelectionComponentIcon       from "@/assets/icons/MenSelectionComponentIcon";
 import OthersGenderSelectComponentIcon from "@/assets/icons/OthersGenderSelectComponentIcon";
-import SlimSelectComponentIcon         from "@/assets/icons/SlimSelectComponentIcon";
 import AthleticSelectComponentIcon     from "@/assets/icons/AthleticSelectComponentIcon";
 import PlumpSelectComponentIcon        from "@/assets/icons/PlumpSelectComponentIcon";
+import SlimSelectComponentIcon         from "@/assets/icons/SlimSelectComponentIcon";
 import StrongSelectComponent           from "@/assets/icons/StrongSelectComponent";
 import EducationLevelDropdown          from "../components/common /EducationLevelDropdown";
 import SelectionCheckComponent         from "../components/common /SelectionCheckComponent";
 import MultiSliderRange                from "../components/common /MultiSliderRange";
-import PadlockFormIcon                 from "@/assets/icons/PadlockFormIcon";
 import EyeInputFormIcon                from "@/assets/icons/EyeInputFormIcon";
-import CheckButton                     from "../components/common /CheckButton";
 import ButtonComponent                 from "../components/common /ButtonComponent";
-import { 
-  View,
-  Text,
-  StyleSheet, 
-  ScrollView, 
-  TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+
 
 type Gender = 'Mujer' | 'Hombre' | 'Otros';
 type Complexion = 'Delgado' | 'Atlético' | 'Normal' | 'Rellenito' | 'Fuerte';
 type Interest = 'Mujer' | 'Hombre' | 'Otros';
 
-const RegistrationScreen = () => {
+
+const EditProfileScreen: React.FC = () => {
   const [selectedGender, setSelectedGender] = useState<Gender | null>(null);
   const [selectedComplexion, setSelectedComplexion] = useState<Complexion | null>(null);
   const [selectedInterest, setSelectedInterest] = useState<Interest[]>([]);
@@ -43,10 +38,11 @@ const RegistrationScreen = () => {
         : [...prevSelected, interest]
     );
   };
+  
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.titleText}>Sobre ti</Text>
-      <TellUsMoreSection />
+      <YourInfoSection />
       <YourGenderSection selectedGender={selectedGender} onSelect={handleGenderSelect} />
       <YourHeightSection />
       <YourComplexionSection selectedComplexion={selectedComplexion} onSelect={handleComplexionSelect} />
@@ -55,98 +51,40 @@ const RegistrationScreen = () => {
       <InterestKnowingSection selectedInterest={selectedInterest} onSelect={handleInterestSelect} />
       <AgePreferenceSection />
       <DistancePreferenceSection />
-      <OneMoreStepSection />
+      <ChangePasswordSection />
     </ScrollView>
   );
 };
 
-const TellUsMoreSection = () => (
-  <View style={styles.sectionContainer}>
-    <Text style={styles.titleSectionText}>Cuéntanos más</Text>
-
-    <View style={styles.inputsContainer}>
-      <Text style={styles.subtitleInputText}>¿Cuál es tu teléfono?</Text>
-      <View style={styles.dropdownContainer}>
-        <PhoneCodeDropdown />
-        <TransparentCustomInput placeholder="" />
+const YourInfoSection = () => {
+  return (
+    <View style={styles.sectionContainer}>
+      <Text style={styles.titleSectionText}>Tu información</Text>
+      <Text style={styles.subtitleInputText}>Correo</Text>
+      <View style={styles.inputsContainer}>
+        <TransparentCustomInput 
+          placeholder="Example@mail.com"
+          rightIcon={<PadlockFormIcon />}
+        />
       </View>
-    </View>
-
-    <View style={styles.inputsContainer}>
-      <Text style={styles.subtitleInputText}>¿Cuál es tu nombre?</Text>
-      <TransparentCustomInput placeholder="Ingresa tu nombre" />
-    </View>
-
-    <View style={styles.inputsContainer}>
-      <Text style={styles.subtitleInputText}>¿Cuál es tu fecha de nacimiento?</Text>
-      <TransparentCustomInput placeholder="DD / MM / AAAA" />
-      <Text style={styles.textLegend}>
-        *Tu perfil muestra tu edad, no tu fecha de nacimiento.
-      </Text>
-    </View>
-
-    <View style={styles.inputsContainer}>
-      <Text style={styles.subtitleInputText}>¿Cuál es tu ciudad?</Text>
-      <TransparentCustomInput placeholder="Ingresa tu ciudad" />
-    </View>
-
-    <View style={styles.inputsContainer}>
-      <Text style={styles.subtitleInputText}>¿De dónde eres?</Text>
+      <Text style={styles.subtitleInputText}>Ciudad</Text>
+      <View style={styles.inputsContainer}>
+        <TransparentCustomInput 
+          placeholder="Madrid"
+        />
+      </View>
+      <Text style={styles.subtitleInputText}>Pais</Text>
       <View style={styles.dropdownContainer}>
         <CountryDropdown />
       </View>
     </View>
-  </View>
-);
-
-interface ComplexionSectionProps {
-  selectedComplexion: Complexion | null;
-  onSelect: (complexion: Complexion) => void;
-}
-
-const YourComplexionSection: React.FC<ComplexionSectionProps> = ({ selectedComplexion, onSelect }) => (
-  <View style={styles.sectionContainer}>
-    <Text style={styles.titleSectionText}>¿Cuál es tu complexión?</Text>
-    <View style={styles.SelectionComponentContainer}>
-      <SelectionComponent
-        icon={<SlimSelectComponentIcon />}
-        text="Delgado"
-        isActive={selectedComplexion === 'Delgado'}
-        onPress={() => onSelect('Delgado')}
-      />
-      <SelectionComponent
-        icon={<AthleticSelectComponentIcon />}
-        text="Atlético"
-        isActive={selectedComplexion === 'Atlético'}
-        onPress={() => onSelect('Atlético')}
-      />
-      <SelectionComponent
-        icon={<SlimSelectComponentIcon />}
-        text="Normal"
-        isActive={selectedComplexion === 'Normal'}
-        onPress={() => onSelect('Normal')}
-      />
-      <SelectionComponent
-        icon={<PlumpSelectComponentIcon />}
-        text="Rellenito"
-        isActive={selectedComplexion === 'Rellenito'}
-        onPress={() => onSelect('Rellenito')}
-      />
-      <SelectionComponent
-        icon={<StrongSelectComponent />}
-        text="Fuerte"
-        isActive={selectedComplexion === 'Fuerte'}
-        onPress={() => onSelect('Fuerte')}
-      />
-    </View>
-  </View>
-);
+  );
+};
 
 interface SelectionSectionProps {
   selectedGender: Gender | null;
   onSelect: (gender: Gender) => void;
 }
-
 
 const YourGenderSection: React.FC<SelectionSectionProps> = ({ selectedGender, onSelect }) => (
   <View style={styles.sectionContainer}>
@@ -178,26 +116,59 @@ const YourHeightSection = () => {
   return (
     <View style={styles.sectionContainer}>
       <Text style={styles.titleSectionText}>¿Cuál es altura?</Text>
-      <View style={styles.inputsContainer}>
-        <Text style={styles.subtitleInputText}>Altura (cms)</Text>
-        <TransparentCustomInput 
-          placeholder="Ej. 180cm"
+      <Text style={styles.subtitleInputText}>Altura (cms)</Text>
+      <TransparentCustomInput 
+          placeholder="180"
         />
-      </View>  
   </View>
   );
 };
+
+interface ComplexionSectionProps {
+  selectedComplexion: Complexion | null;
+  onSelect: (complexion: Complexion) => void;
+}
+
+const YourComplexionSection: React.FC<ComplexionSectionProps> = ({ selectedComplexion, onSelect }) => (
+  <View style={styles.sectionContainer}>
+    <Text style={styles.titleSectionText}>¿Cuál es tu complexión?</Text>
+    <View style={styles.SelectionComponentContainer}>
+      <SelectionComponent
+        icon={<SlimSelectComponentIcon />}
+        text="Delgado"
+        isActive={selectedComplexion === 'Delgado'}
+        onPress={() => onSelect('Delgado')}
+      />
+      <SelectionComponent
+        icon={<AthleticSelectComponentIcon />}
+        text="Atlético"
+        isActive={selectedComplexion === 'Atlético'}
+        onPress={() => onSelect('Atlético')}
+      />
+      <SelectionComponent
+        icon={<PlumpSelectComponentIcon />}
+        text="Rellenito"
+        isActive={selectedComplexion === 'Rellenito'}
+        onPress={() => onSelect('Rellenito')}
+      />
+      <SelectionComponent
+        icon={<StrongSelectComponent />}
+        text="Fuerte"
+        isActive={selectedComplexion === 'Fuerte'}
+        onPress={() => onSelect('Fuerte')}
+      />
+    </View>
+  </View>
+);
 
 const YourLevelStudySection = () => {
   return (
     <View style={styles.sectionContainer}>
       <Text style={styles.titleSectionText}>¿Cuál es tu nivel de educación?</Text>
-      <View style={styles.inputsContainer}>
-        <Text style={styles.subtitleInputText}>Educación</Text>
+      <Text style={styles.subtitleInputText}>Educación</Text>
           <View style={styles.dropdownContainer}>
             <EducationLevelDropdown />
           </View>
-      </View>  
     </View>
   );
 };
@@ -265,161 +236,95 @@ const DistancePreferenceSection = () => {
   );
 };
 
-const OneMoreStepSection = () => {
+const ChangePasswordSection = () => {
   return (
-    <View style={styles.oneMoreStepSectionContainer}>
-      <Text style={styles.titleSectionText}>Solo un paso más</Text>
+    <View style={styles.sectionContainer}>
+      <Text style={styles.titleSectionText}>Cambiar contraseña</Text>
+      <Text style={styles.subtitleInputText}>Contraseña actual</Text>
       <View style={styles.inputsContainer}>
-        <Text style={styles.subtitleInputText}>¿Cuál tu correo?</Text>
         <TransparentCustomInput 
-          placeholder="ejemplo@mail.com"
-          rightIcon={<PadlockFormIcon />}
-          />
-      </View>
-      <View style={styles.inputsContainer}>
-        <Text style={styles.subtitleInputText}>¿Cuál tu correo?</Text>
-        <TransparentCustomInput 
-          placeholder="••••••••"
+          placeholder="Contraseña actual"
           rightIcon={<EyeInputFormIcon />}
-          />
-      </View>
-      <View style={styles.termsConditionsContainer}>
-        <CheckButton />
-        <View style={styles.textSection}>
-          <View style={styles.termsConditionsTextContainer}>
-              <Text style={styles.regularText}>Acepto los{'  '}</Text>
-              <TouchableOpacity onPress={() => {}}>
-                <Text style={styles.termsConditionsText}>Términos y condiciones.</Text>
-              </TouchableOpacity>
-          </View>
-          <View style={styles.privacyPolicyTextContainer}>
-              <Text style={styles.regularText}>
-              Conoce cómo utilizamos tus datos en nuestra
-              </Text>
-              <TouchableOpacity onPress={() => {}}>
-                <Text style={styles.privacyPolicyText}>Términos y condiciones.</Text>
-              </TouchableOpacity>
-          </View>
-        </View>
+        />
+      </View>  
+      <Text style={styles.subtitleInputText}>Contraseña nueva</Text>
+      <View style={styles.inputsContainer}>
+        <TransparentCustomInput 
+          placeholder="Contraseña nueva"
+          rightIcon={<EyeInputFormIcon />}
+        />
       </View> 
+      <Text style={styles.subtitleInputText}>Confirma tu contraseña</Text>
+      <View style={styles.inputsContainer}>
+        <TransparentCustomInput 
+          placeholder="Confirma tu contraseña"
+          rightIcon={<EyeInputFormIcon />}
+        />
+      </View>
       <View style={styles.buttonContainer}>
         <ButtonComponent
-          title="Regístrarme"
-          color="#B4002D"
+          title="Guardar cambios"
+          color="#F6F6F6"
           onPress={() => {}}
-          textColor="#FFF"
+          textColor="#A1A1A1"
         />
-       </View>   
-    </View>     
+    </View> 
+    </View>
   );
 };
-
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 24,
-    paddingTop: 25,
+    paddingTop: 49,
     backgroundColor: '#FFF',
-    paddingBottom: 100,
+    paddingBottom: 100
+  },
+  dropdownContainer: {
+    flexDirection: 'row',
   },
   titleText: {
-    color: '#B4002D',
+    color: '#222',
     fontSize: 24,
     fontFamily: 'Inter_600SemiBold',
     paddingBottom: 32,
   },
   sectionContainer: {
-    gap: 16,
-    paddingBottom: 32,
+    paddingBottom: 32
   },
   titleSectionText: {
-    fontFamily: 'Inter_600SemiBold',
+    color: '#B4002D',
     fontSize: 17,
-    color: '#222',
-    paddingBottom: 16,
+    fontFamily: 'Inter_600SemiBold',
+    paddingBottom: 24,
   },
   subtitleInputText: {
     paddingLeft: 16,
     paddingBottom: 8,
     color: '#222',
     fontFamily: 'Inter_400Regular',
-    fontSize: 12,
+    fontSize: 12
   },
-  inputsContainer: {},
-  dropdownContainer: {
-    flexDirection: 'row',
-    gap: 8,
-    width: '100%',
-  },
-  textLegend: {
-    color: '#777',
-    fontSize: 12,
-    lineHeight: 16,
-    fontFamily: 'Inter_400Regular',
-    paddingTop: 10,
-  },
-  textGenderLegend: {
-    color: '#777',
-    fontSize: 12,
-    lineHeight: 16,
-    fontFamily: 'Inter_400Regular',
+  inputsContainer: {
+    paddingBottom: 16
   },
   SelectionComponentContainer: {
-    gap: 10,
-  },
-  oneMoreStepSectionContainer: {
-    gap: 16,
+    gap: 10
   },
   textAgePreference: {
     color: '#777',
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: 14,
+    lineHeight: 20,
     fontFamily: 'Inter_400Regular',
-    paddingBottom: 20,
+    paddingBottom: 20
   },
-  termsConditionsContainer: {
-    flexDirection: 'row',
-    alignContent: 'flex-start',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    paddingVertical: 8,
-  },
-  termsConditionsTextContainer: {
-    flex: 1,
-    paddingLeft: 12,
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  textSection: {},
-  regularText: {
-    fontFamily: 'Inter_400Regular',
-    fontSize: 12,
-    color: '#777',
-    lineHeight: 16,
-  },
-  termsConditionsText: {
-    fontSize: 12,
-    fontFamily: 'Inter_400Regular',
-    color: '#B4002D',
-    lineHeight: 16,
-  },
-  privacyPolicyTextContainer: {
-    justifyContent: 'center',
-    alignContent: 'flex-start',
-    paddingLeft: 12,
-  },
-  privacyPolicyText: {
-    fontSize: 12,
-    fontFamily: 'Inter_400Regular',
-    color: '#B4002D',
-    lineHeight: 16,
-  },
-  buttonContainer: {
-    paddingBottom: 100,
-  },
-});
+  buttonContainer:{
+    paddingTop: 16,
+    paddingBottom: 100
+  }
+})
 
-export default RegistrationScreen;
+
+export default EditProfileScreen;

@@ -12,6 +12,7 @@ export type RootStackParams = {
   LoginScreen: undefined;
   RegistrationScreen: undefined;
   PasswordRecoveryScreen:  undefined;
+  EditProfileScreen:   undefined;
 }
 
 export type  ButtonComponentProps = {

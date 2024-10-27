@@ -1,21 +1,32 @@
+import CheckIcon from "@/assets/icons/CheckIcon";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 interface SelectionCheckComponentProps {
   icon: JSX.Element;
   text: string;
+  isActive?: boolean;
+  onPress: () => void;
 }
 
-const SelectionCheckComponent: React.FC<SelectionCheckComponentProps> = ({ icon, text }) => {
+const SelectionCheckComponent: React.FC<SelectionCheckComponentProps> = ({ icon, text, isActive = false, onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={[
+        styles.container,
+        isActive && styles.activeContainer,
+      ]}
+      onPress={onPress}
+    >
       <View style={styles.iconTextContainer}>
         {icon}
         <Text style={styles.text}>{text}</Text>
       </View>
 
-      <TouchableOpacity style={styles.radioButton} />
-    </View>
+      <View style={[styles.radioButton, isActive && styles.activeRadioButton]}>
+        {isActive && <CheckIcon />}
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -30,6 +41,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  activeContainer: {
+    backgroundColor: '#F9EBEF',
+  },
   iconTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -38,19 +52,23 @@ const styles = StyleSheet.create({
     color: '#222',
     paddingLeft: 8,
     fontFamily: 'Inter_400Regular',
-    fontSize: 16, 
+    fontSize: 16,
     fontWeight: '400',
     lineHeight: 22,
   },
   radioButton: {
-    display: 'flex',
     width: 22,
     height: 22,
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#CCC',
     backgroundColor: '#FFF',
+  },
+  activeRadioButton: {
+    backgroundColor: '#B4002D',
+    borderWidth: 0,
   },
 });
 

@@ -1,4 +1,4 @@
-import HeartIcon                  from '@/assets/icons/HeartIcon';
+import HeartIcon from '@/assets/icons/HeartIcon';
 import React, { useState }        from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Dropdown }               from 'react-native-element-dropdown';

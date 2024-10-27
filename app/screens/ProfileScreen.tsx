@@ -5,11 +5,16 @@ import ProfileAvatarComponent from "../components/ProfileAvatarComponent";
 import RomanceModeIcon        from "@/assets/icons/RomanceModeIcon";
 import ProfileContent         from "../components/ProfileContent";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParams } from "../types";
 
 const ProfileScreen = () => {
   const [activeMenuItem, setActiveMenuItem] = useState('Perfil');
 
   const menuItems = ['Perfil', 'Gustos', 'Privacidad', 'Datos']; 
+
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
+
 
   const renderContent = () => {
     switch (activeMenuItem) {
@@ -46,7 +51,11 @@ const ProfileScreen = () => {
     <View style={styles.container}>
       <View style={styles.profileHeaderContainer}>
         <View style={styles.profileContentContainer}>
-          <TouchableOpacity style={styles.leftIconContainer}>
+          <TouchableOpacity 
+          style={styles.leftIconContainer}
+          onPress={() => navigation.navigate('EditProfileScreen')}
+          >
+            
             <EditProfileIcon />
           </TouchableOpacity>
           <View style={styles.profileInfoContainer}>

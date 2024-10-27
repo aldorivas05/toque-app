@@ -4,18 +4,30 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 interface SelectionComponentProps {
   icon: JSX.Element;
   text: string;
+  isActive?: boolean;
+  onPress: () => void;
 }
 
-const SelectionComponent: React.FC<SelectionComponentProps> = ({ icon, text }) => {
+const SelectionComponent: React.FC<SelectionComponentProps> = ({ icon, text, isActive = false, onPress }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={[
+        styles.container,
+        isActive && styles.activeContainer,
+      ]}
+      onPress={onPress}
+    >
       <View style={styles.iconTextContainer}>
         {icon}
         <Text style={styles.text}>{text}</Text>
       </View>
-
-      <TouchableOpacity style={styles.radioButton} />
-    </View>
+      <View
+        style={[
+          styles.radioButton,
+          isActive && styles.activeRadioButton,
+        ]}
+      />
+    </TouchableOpacity>
   );
 };
 
@@ -30,6 +42,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  activeContainer: {
+    backgroundColor: '#F9EBEF',
+  },
   iconTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -38,20 +53,23 @@ const styles = StyleSheet.create({
     color: '#222',
     paddingLeft: 8,
     fontFamily: 'Inter_400Regular',
-    fontSize: 16, 
+    fontSize: 16,
     fontWeight: '400',
     lineHeight: 22,
   },
   radioButton: {
-    display: 'flex',
     width: 22,
     height: 22,
-    alignItems: 'center',
     borderRadius: 12,
     borderWidth: 1,
     borderColor: '#CCC',
     backgroundColor: '#FFF',
   },
+  activeRadioButton: {
+    borderWidth: 5,
+    borderColor: '#B4002D',
+  },
 });
 
 export default SelectionComponent;
+
